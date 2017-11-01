@@ -62,7 +62,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 6 "zoomjoystrong.y" /* yacc.c:1909  */
+#line 7 "zoomjoystrong.y" /* yacc.c:1909  */
 
 	int iVal;
 	float fVal;

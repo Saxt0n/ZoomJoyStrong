@@ -1,38 +1,37 @@
 %{
-#include <stdio.h>;
+#include <stdio.h>
+#include <stdlib.h>
 #include "zoomjoystrong.tab.h"
 %}
 
+%option noyywrap
+
 %%
 
-end		{return END};
+end		{return END;}
 
-;		{return END_STATEMENT};
+;		{return END_STATEMENT;}
 
-point 		{return POINT};
+point 		{return POINT;}
 
-line 		{return LINE};
+line 		{return LINE;}
 
-circle 		{return CIRCLE};
+circle 		{return CIRCLE;}
 
-rectangle	{return RECTANGLE};
+rectangle	{return RECTANGLE;}
 
-set_color	{return SET_COLOR};
+set_color	{return SET_COLOR;}
 
 [0-9]+		{yylval.iVal = atoi(yytext);
-		return INT};
+		return INT;}
 
 [0-9]+\.[0-9]+	{yylval.fVal = atof(yytext);
-		return FLOAT};
+		return FLOAT;}
 
-[/n/t/r]+	;
+[ /t/r]+	;
 
-.		{};
+\n		;
+
+.		{printf("Not a valid input: %s\n", yytext);}
 
 %%
-
-int main() {
-	yylex();
-	return 0;
-}
-

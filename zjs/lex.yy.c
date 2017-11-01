@@ -332,6 +332,9 @@ void yyfree (void *  );
 
 /* Begin user sect3 */
 
+#define yywrap() 1
+#define YY_SKIP_YYWRAP
+
 typedef unsigned char YY_CHAR;
 
 FILE *yyin = (FILE *) 0, *yyout = (FILE *) 0;
@@ -360,8 +363,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 12
-#define YY_END_OF_BUFFER 13
+#define YY_NUM_RULES 13
+#define YY_END_OF_BUFFER 14
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -371,8 +374,8 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[50] =
     {   0,
-        0,    0,   13,   11,   12,   10,    8,    2,   11,   11,
-       11,   11,   10,   11,   10,    0,    8,    0,    0,    0,
+        0,    0,   14,   12,   11,   10,    8,    2,   12,   12,
+       12,   12,   10,   12,   10,    0,    8,    0,    0,    0,
         0,    0,    0,    9,    0,    1,    0,    0,    0,    0,
         0,    4,    0,    0,    0,    0,    3,    0,    0,    5,
         0,    0,    0,    0,    0,    0,    6,    7,    0
@@ -383,8 +386,8 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    3,    4,    5,    5,    5,
+        1,    3,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    4,    3,    5,    5,    5,
         5,    5,    5,    5,    5,    5,    5,    1,    6,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -412,13 +415,13 @@ static yyconst flex_int32_t yy_ec[256] =
 
 static yyconst flex_int32_t yy_meta[21] =
     {   0,
-        1,    1,    1,    2,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    2,    1,    1,    2,    1,    2
+        1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    2,    1,    2
     } ;
 
 static yyconst flex_int16_t yy_base[51] =
     {   0,
-        0,    0,   58,   59,   59,    0,   18,   59,   44,   41,
+        0,    0,   58,   59,   59,    0,   17,   59,   44,   41,
        42,   38,   42,   41,    0,   46,   19,   32,   39,   33,
        34,   37,   25,   39,   34,   59,   31,   26,   20,   32,
        24,   59,   17,   28,   26,   23,   59,   18,   16,   59,
@@ -436,9 +439,9 @@ static yyconst flex_int16_t yy_def[51] =
 
 static yyconst flex_int16_t yy_nxt[80] =
     {   0,
-        4,    5,    4,    6,    7,    8,    4,    4,    9,    4,
-       10,    4,    4,   11,    6,    4,   12,   13,   14,    6,
-       16,   16,   17,   17,   15,   48,   47,   46,   45,   44,
+        4,    5,    6,    4,    7,    8,    4,    4,    9,    4,
+       10,    4,    4,   11,    4,    4,   12,   13,   14,    6,
+       16,   17,   16,   17,   15,   48,   47,   46,   45,   44,
        43,   42,   41,   40,   39,   38,   37,   36,   35,   34,
        33,   32,   31,   24,   30,   29,   28,   27,   26,   25,
        24,   23,   22,   21,   20,   19,   18,   49,    3,   49,
@@ -450,7 +453,7 @@ static yyconst flex_int16_t yy_chk[80] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        7,   17,    7,   17,   50,   46,   45,   44,   43,   42,
+        7,    7,   17,   17,   50,   46,   45,   44,   43,   42,
        41,   39,   38,   36,   35,   34,   33,   31,   30,   29,
        28,   27,   25,   24,   23,   22,   21,   20,   19,   18,
        16,   14,   13,   12,   11,   10,    9,    3,   49,   49,
@@ -474,9 +477,10 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "zoomjoystrong.lex"
 #line 2 "zoomjoystrong.lex"
-#include <stdio.h>;
+#include <stdio.h>
+#include <stdlib.h>
 #include "zoomjoystrong.tab.h"
-#line 480 "lex.yy.c"
+#line 484 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -658,10 +662,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 6 "zoomjoystrong.lex"
+#line 9 "zoomjoystrong.lex"
 
 
-#line 665 "lex.yy.c"
+#line 669 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -746,67 +750,73 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 8 "zoomjoystrong.lex"
-{return END};
+#line 11 "zoomjoystrong.lex"
+{return END;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 10 "zoomjoystrong.lex"
-{return END_STATEMENT};
+#line 13 "zoomjoystrong.lex"
+{return END_STATEMENT;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 12 "zoomjoystrong.lex"
-{return POINT};
+#line 15 "zoomjoystrong.lex"
+{return POINT;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 14 "zoomjoystrong.lex"
-{return LINE};
+#line 17 "zoomjoystrong.lex"
+{return LINE;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 16 "zoomjoystrong.lex"
-{return CIRCLE};
+#line 19 "zoomjoystrong.lex"
+{return CIRCLE;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 18 "zoomjoystrong.lex"
-{return RECTANGLE};
+#line 21 "zoomjoystrong.lex"
+{return RECTANGLE;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 20 "zoomjoystrong.lex"
-{return SET_COLOR};
+#line 23 "zoomjoystrong.lex"
+{return SET_COLOR;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 22 "zoomjoystrong.lex"
+#line 25 "zoomjoystrong.lex"
 {yylval.iVal = atoi(yytext);
-		return INT};
+		return INT;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 25 "zoomjoystrong.lex"
+#line 28 "zoomjoystrong.lex"
 {yylval.fVal = atof(yytext);
-		return FLOAT};
+		return FLOAT;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 28 "zoomjoystrong.lex"
+#line 31 "zoomjoystrong.lex"
 ;
 	YY_BREAK
 case 11:
+/* rule 11 can match eol */
 YY_RULE_SETUP
-#line 30 "zoomjoystrong.lex"
-{};
+#line 33 "zoomjoystrong.lex"
+;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 32 "zoomjoystrong.lex"
+#line 35 "zoomjoystrong.lex"
+{printf("Not a valid input: %s\n", yytext);}
+	YY_BREAK
+case 13:
+YY_RULE_SETUP
+#line 37 "zoomjoystrong.lex"
 ECHO;
 	YY_BREAK
-#line 810 "lex.yy.c"
+#line 820 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1800,13 +1810,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 32 "zoomjoystrong.lex"
+#line 37 "zoomjoystrong.lex"
 
-
-
-int main() {
-	yylex();
-	return 0;
-}
 
 
